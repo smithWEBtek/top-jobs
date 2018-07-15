@@ -1,1 +1,15 @@
-<h3>New User Sign On</h3>
+<h3>New User Sign Up</h3>
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :password %><br>
+    <%= f.password_field :password %><br>
+
+    <label for="user_admin">Check box if you are an employer </label>
+    <input name="user[admin]" type="hidden" value="0"> 
+    <input class="form-check-input" type="checkbox" value="1" name="user[admin]" id="user_admin"><br>
+
+    <%= f.submit "Create User" %>
+    <% end %> 
