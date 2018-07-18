@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
-  resources :applications
-  resources :jobs
   resources :users
+
+  resources :jobs do 
+    resources :applications, only: [:index, :new, :create]
+  end
+
+  resources :applications, only: [:show, :edit, :update, :destroy]
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
