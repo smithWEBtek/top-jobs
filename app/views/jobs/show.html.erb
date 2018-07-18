@@ -1,4 +1,11 @@
 <h1>Jobs Show</h1>
-<%= @job.title %>
-<%= @job.location %>
-<%= @job.company %>
+<%= @job.title %><br>
+<%= @job.location %><br>
+<%= @job.company %><br>
+<%= @job.salary %>K<br>
+<%= @job.description %><br>
+
+
+
+<%= link_to "Apply to Job", new_application_path %> <br>
+<%= link_to "Edit Job", edit_job_path %>
