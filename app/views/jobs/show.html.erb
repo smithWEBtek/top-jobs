@@ -5,6 +5,8 @@
 <%= @job.salary %>K<br>
 <%= @job.description %><br>
 
+<%= link_to 'Delete', job_path(@job),
+data: {:confirm => 'Are you sure?'}, :method => :delete %>
 
 
 <%= link_to "Apply to Job", new_job_application_path(@job) %> <br>

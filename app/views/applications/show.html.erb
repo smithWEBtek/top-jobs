@@ -1,1 +1,8 @@
 <h3>Application Show</h3>
+
+
+<%= @application.email %>
+<%= @application.qualifications %><br>
+
+<%= link_to 'Delete', application_path(@application),
+data: {:confirm => 'Are you sure?'}, :method => :delete %>

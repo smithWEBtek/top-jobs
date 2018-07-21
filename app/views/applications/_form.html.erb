@@ -4,7 +4,7 @@ Applying for <%= @job.title %> at <%= @job.company %><br>
 <%= @job.description %>
 
 
-<%= form_for(job_applications_path) do |f| %>
+<%= form_for @application, url: {action: "create"} do |f| %>
     
     <label>Email:</label><br>
     <%= f.hidden_field :job_id %>
@@ -12,6 +12,6 @@ Applying for <%= @job.title %> at <%= @job.company %><br>
     <%= f.text_field :email %><br>
 
     <label>Qualifications</label><br>
-    <%= f.text_area :quailifications %><br>
+    <%= f.text_area :qualifications %><br>
     <%= f.submit %>
     <% end %>

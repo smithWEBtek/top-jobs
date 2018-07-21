@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :jobs do 
-    resources :applications, only: [:index, :new, :create]
+    resources :applications, only: [:index, :show, :new, :create, :edit]
   end
 
-  resources :applications, only: [:show, :edit, :update, :destroy]
+  resources :applications
 
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
