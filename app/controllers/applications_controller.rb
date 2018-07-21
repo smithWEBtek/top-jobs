@@ -1,20 +1,32 @@
 class ApplicationsController < ApplicationController
 
   def new 
-    @application = Application.new (job_id: params[:job_id])
+    
+    @user = current_user
+    if params[:job_id] 
+      @job = Job.find_by_id(params[:job_id])
+      @application = Application.new(job_id: params[:job_id])
+    end
   end
 
   def index 
-    if params[:job_id]
-      @applications = Job.find(params[:job_id]).applications 
+    @user = current_user
+    if params[:job_id] 
+      @job = Job.find_by(id: params[:job_id])      
+      @applications = @job.applications 
     else 
       @applications = Application.all 
     end 
   end
 
   def create 
+    @user = current_user
     @application = Application.create(application_params)
-    redirect_to application_path(@application)
+    if @application.save
+      redirect_to application_path(@application)
+    else 
+      render :new 
+    end
   end
 
   def show 
