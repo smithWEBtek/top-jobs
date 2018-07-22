@@ -18,14 +18,13 @@ class ApplicationsController < ApplicationController
     
     if params[:job_id] 
       @job = Job.find_by(id: params[:job_id])      
-      #@applications = @job.applications 
+      @applications = @job.applications 
     else 
       @applications = Application.all 
     end 
   end
 
-  def create 
-    
+  def create     
     @user = current_user
     @job = Job.find_by(id: params[:job_id]) 
     @application = Application.create(application_params)
