@@ -10,14 +10,16 @@
     <%= f.label :Category %><br>
     <%= f.text_field :category %><br>
 
-    <%= f.label :Company %><br>
-    <%= f.text_field :company %><br>
+    <%= f.label "Company Name" %><br>
+    <%= f.text_field :company_name %><br>
 
     <%= f.label :Salary %><br> 
     <%= f.text_field :salary %><br>
 
     <%= f.label :Description %><br>
     <%= f.text_area :description %><br>
+
+    <%=  f.hidden_field :company_id, :value => @user.id unless @job.company_id %>
 
     <%= f.submit %>
     <% end %>
