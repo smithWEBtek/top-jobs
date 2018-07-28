@@ -1,8 +1,13 @@
 class User < ApplicationRecord
-    has_many :applications
-    has_many :jobs, through: :applications
+
+    enum role: [:applicant, :company] 
+
+    has_many :jobs, :foreign_key => 'company_id'
+
+    has_many :applications, :foreign_key => 'user_id'
+    has_many :jobs, through: :applications, :foreign_key => 'user_id'
     has_secure_password
-    enum role: [:user, :company, :admin] 
+    
 
     def set_default_role 
         self.role ||= :user 
