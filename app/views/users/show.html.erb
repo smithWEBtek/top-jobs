@@ -3,10 +3,22 @@
 
 <h4>Your Jobs</h4>
 
-<% @user.jobs.each do |job| %>
-    <%= job.title %><br>
+<% if @user.role == "applicant" %>
+
+<% @user.applications.each do |application| %>
+    <%= application.job.title %><br>
     <% end %>
     <br>
+    <% end %>
+
+    <% if @user.role == "company" %>
+    <% @user.jobs.each do |job| %>
+      <%= job.title %><br>
+      <% end %>
+      <% end %>
+
+      
+    
 
 <% if @user.role == "company" %>
 <%= link_to "Post New Job", new_job_path %><br>

@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
 
-  def new     
+  def new  
+    @user = current_user   
     if !logged_in?
       flash[:alert] = "Please sign-in or sign-up to apply for a job"
       redirect_to '/'
@@ -66,6 +67,6 @@ class ApplicationsController < ApplicationController
   private 
 
   def application_params 
-    params.require(:application).permit(:user_id, :job_id, :email, :qualifications)
+    params.require(:application).permit(:user_id, :job_id, :email, :qualifications, :applicant_id)
   end
 end

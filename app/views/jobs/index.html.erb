@@ -1,5 +1,5 @@
 <h1>Jobs Index</h1>
 
 <% @jobs.each do |job| %> 
-    <%= job.title %>  <%= job.company_name %>  <%= job.location %><br>
+    <%= job.title %>  <%= job.company_name %>  <%= job.location %> <%= link_to "See Job", job_path(job) %><br>
     <% end %>

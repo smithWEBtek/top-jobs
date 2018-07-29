@@ -5,4 +5,6 @@
 <%= @application.qualifications %><br>
 
 <%= link_to 'Delete', application_path(@application),
-data: {:confirm => 'Are you sure?'}, :method => :delete %>
+data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
+
+<%= link_to 'My Jobs', user_path(@user) %> 
