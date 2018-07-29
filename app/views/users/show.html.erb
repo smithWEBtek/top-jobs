@@ -6,9 +6,14 @@
 <% @user.jobs.each do |job| %>
     <%= job.title %><br>
     <% end %>
+    <br>
 
 <% if @user.role == "company" %>
 <%= link_to "Post New Job", new_job_path %><br>
 <% end %>
+
+<%= link_to "Edit User", edit_user_path %><br>
+
+<%= link_to "See all jobs", jobs_path %><br>
 
 <%= link_to "Log Out", signout_path %>

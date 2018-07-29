@@ -10,8 +10,8 @@
 <%= link_to 'Delete', job_path(@job),
 data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
 
-
-<% else %>
 <%= link_to "Edit Job", edit_job_path %>
+<% else %>
+
 <%= link_to "Apply to Job", new_job_application_path(@job) %> <br>
 <% end %>

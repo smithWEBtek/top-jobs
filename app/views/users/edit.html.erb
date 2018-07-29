@@ -1,0 +1,16 @@
+<h3>Edit User</h3>
+
+<%= form_for @user do |f| %>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+
+    <%= f.label :password %><br>
+    <%= f.password_field :password %><br>
+
+      
+
+      <label for="user_role">Choose the type of User you are: </label>
+      <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %><br>
+
+    <%= f.submit "Edit User" %>
+    <% end %> 
