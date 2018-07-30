@@ -1,19 +1,20 @@
 <h3>Hi <%= @user.name %> </h3>
-  <h4> Role: <%= @user.role %></h4>
+  <h4> Type: <%= @user.role %></h4>
 
-<h4>Your Jobs</h4>
+
 
 <% if @user.role == "applicant" %>
-
+  <h4>Jobs Applied To</h4>
 <% @user.applications.each do |application| %>
-    <%= application.job.title %><br>
+    <%= application.job.title %> | <%= application.job.company_name %><br>
     <% end %>
     <br>
     <% end %>
 
     <% if @user.role == "company" %>
+    <h4>Jobs Posted</h4>
     <% @user.jobs.each do |job| %>
-      <%= job.title %><br>
+      <%= job.title %> |  <%= job.location %><br>
       <% end %>
       <% end %>
 
