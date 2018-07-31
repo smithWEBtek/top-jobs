@@ -1,7 +1,8 @@
 <h1>Jobs Show</h1>
 <%= @job.title %><br>
-<%= @job.location %><br>
+Posted: <%= @job.created_at.strftime("%m/%d/%y") %><br>
 <%= @job.company_name %><br>
+<%= @job.location %><br>
 <%= @job.salary %>K<br>
 <%= @job.description %><br>
 
