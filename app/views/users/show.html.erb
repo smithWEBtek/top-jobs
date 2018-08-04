@@ -6,7 +6,7 @@
 <% if @user.role == "applicant" %>
   <h4>Jobs Applied To</h4>
 <% @user.applications.each do |application| %>
-    <%= application.job.title %> | <%= application.job.company_name %> | 
+    <%= link_to "#{application.job.title}", application_path(application) %> | <%= application.job.company_name %> | 
     Applied: <%= application.created_at.strftime("%m/%d/%y") %><br>
     <% end %>
     <br>
@@ -15,20 +15,21 @@
     <% if @user.role == "company" %>
     <h4>Jobs Posted</h4>
     <% @user.jobs.each do |job| %>
-      <%= job.title %> |  <%= job.location %> | 
+      <%= link_to "#{job.title}", job_path(job) %>|  <%= job.location %> | 
       Date Posted: <%= job.created_at.strftime("%m/%d/%y") %><br>
       <% end %>
       <% end %>
+      <br>
 
       
     
 
 <% if @user.role == "company" %>
-<%= link_to "Post New Job", new_job_path %><br>
+<%= link_to "Post New Job", new_job_path %> |
 <% end %>
 
-<%= link_to "Edit User", edit_user_path %><br>
+<%= link_to "Edit User", edit_user_path %>  |
 
-<%= link_to "See all jobs", jobs_path %><br>
+<%= link_to "See all jobs", jobs_path %>  |
 
 <%= link_to "Log Out", signout_path %>

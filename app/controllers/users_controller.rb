@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   end 
 
   def show 
+    
     if logged_in?
         @user = User.find_by(id: params[:id])
     else

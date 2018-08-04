@@ -5,11 +5,16 @@ Posted: <%= @job.created_at.strftime("%m/%d/%y") %><br>
 <%= @job.location %><br>
 <%= @job.salary %>K<br>
 <%= @job.description %><br>
+<br>
+<% if @job.company_id != nil && @user.id == @job.company_id%>
 
-<% if @user.id == @job.company_id %>
+<%= link_to 'See Applicants', job_applications_path(@job) %><br>
+<br>
+<%= link_to 'Company Job List', user_path(@user.id) %><br>
 
-<%= link_to 'Delete', job_path(@job),
-data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
+
+<%= link_to 'Delete Job', job_path(@job),
+data: {:confirm => 'Are you sure?'}, :method => :delete %>
 
 <%= link_to "Edit Job", edit_job_path %>
 <% else %>
