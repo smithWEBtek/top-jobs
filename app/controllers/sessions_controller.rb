@@ -8,8 +8,9 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id 
       redirect_to user_path(@user)
     else 
+      flash[:notice] = "User name or password do not match our records."
       render :new 
-    end 
+    end     
   end
 
   def destroy 

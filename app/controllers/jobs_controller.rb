@@ -10,13 +10,15 @@ class JobsController < ApplicationController
     @user = current_user 
   end 
 
-  def create 
-       
+  def create        
     @user = current_user
-    @job = Job.create(job_params)
-    #@job.company_id == @user.id
-    #@job.save
-    redirect_to job_path(@job)
+    @job = Job.new(job_params)
+    if @job.valid?
+      @job.save      
+      redirect_to job_path(@job)
+    else 
+      render :new
+    end
   end
 
   def show 

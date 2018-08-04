@@ -5,6 +5,20 @@ Applying for <%= @job.title %> at <%= @job.company_name %><br>
 
 
 <%= form_for @application, url: {action: "create"} do |f| %>
+
+    <% if @application.errors.any? %>
+    <div id="error_explanation">
+    <h4>There were some errors:</h4>
+  
+    <ul>
+    <% @application.errors.full_messages.each do |message| %>
+      <li><%= message %> </li>
+      <% end %>
+      </ul>
+      </div>
+      <% end %>
+
+   
     
     <label>Email:</label><br>
     <%= f.hidden_field :job_id %>

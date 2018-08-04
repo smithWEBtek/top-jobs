@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    validates_presence_of :name, :password
+    validates :name, uniqueness: true
+    
 
     enum role: [:applicant, :company] 
 

@@ -1,6 +1,19 @@
 <h3>Jobs Form</h3>
 
 <%= form_for @job do |f| %>
+
+    <% if @job.errors.any? %>
+  <div id="error_explanation">
+  <h4>There were some errors:</h4>
+
+  <ul>
+  <% @job.errors.full_messages.each do |message| %>
+    <li><%= message %> </li>
+    <% end %>
+    </ul>
+    </div>
+    <% end %>
+
     <%= f.label :Title %><br>
     <%= f.text_field :title %><br>
 

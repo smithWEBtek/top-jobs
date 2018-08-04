@@ -28,9 +28,11 @@ class ApplicationsController < ApplicationController
   def create     
     @user = current_user
     @job = Job.find_by(id: params[:job_id]) 
-    @application = Application.create(application_params)
-    @application.user_id = @user.id
-    if @application.save
+    @application = Application.new(application_params)
+    if @application.valid?
+      @application.save 
+      @application.user_id = @user.id
+    
       redirect_to application_path(@application)
     else 
       render :new 
