@@ -21,8 +21,7 @@ class JobsController < ApplicationController
     end
   end
 
-  def show 
-    
+  def show     
     @job = Job.find_by(id: params[:id])
     @user = current_user 
   end
