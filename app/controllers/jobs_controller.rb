@@ -1,8 +1,9 @@
 class JobsController < ApplicationController
 
   def new 
-    @user = current_user
+    @user = current_user    
     @job = Job.new 
+    
   end
 
   def index 
@@ -13,11 +14,12 @@ class JobsController < ApplicationController
   def create        
     @user = current_user
     @job = Job.new(job_params)
+    authorize @job
     if @job.valid?
       @job.save      
-      redirect_to job_path(@job)
+      redirect_to job_path(@job), alert: "Job successfully created!"
     else 
-      render :new
+      render :new, alert: "Please try entry again."
     end
   end
 
@@ -28,19 +30,22 @@ class JobsController < ApplicationController
 
   def edit 
     @job = Job.find_by(id: params[:id])
-    @user = current_user 
+    @user = current_user
+    authorize @job  
   end
 
   def update 
     @job = Job.find_by(id: params[:id])
+    authorize @job
     @job.update(job_params)
-    redirect_to job_path(@job)
+    redirect_to job_path(@job), alert: "Job successfully updated!"
   end 
 
   def destroy 
     @job = Job.find_by(id: params[:id])
+    authorize @job
     @job.destroy
-    redirect_to '/'
+    redirect_to root_path, alert: "Job successfully deleted"
   end
 
   private
