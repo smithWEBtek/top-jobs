@@ -4,14 +4,14 @@ Applying for <%= @job.title %> at <%= @job.company_name %><br>
 <%= @job.description %>
 
 
-<%= form_for @application, url: {action: "create"} do |f| %>
+<%= form_for @job_application, url: {action: "create"} do |f| %>
 
-    <% if @application.errors.any? %>
+    <% if @job_application.errors.any? %>
     <div id="error_explanation">
     <h4>There were some errors:</h4>
   
     <ul>
-    <% @application.errors.full_messages.each do |message| %>
+    <% @job_application.errors.full_messages.each do |message| %>
       <li><%= message %> </li>
       <% end %>
       </ul>
@@ -29,7 +29,7 @@ Applying for <%= @job.title %> at <%= @job.company_name %><br>
     <%= f.text_area :qualifications %><br>
 
     <%= f.hidden_field :user_id, :value => @user.id %>
-    <%=  f.hidden_field :applicant_id, :value => @user.id unless @application.applicant_id %>
+    <%=  f.hidden_field :applicant_id, :value => @user.id unless @job_application.applicant_id %>
 
     <%= f.submit %>
     <% end %>
