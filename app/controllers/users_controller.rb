@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_login, :except => [:new, :create]
-  before_action :set_user, :except => [:new, :create]
+  before_action :find_user, :except => [:new, :create]
   
 
   def new 
@@ -18,19 +18,28 @@ class UsersController < ApplicationController
     end
   end 
 
-  def show        
+  def show  
+    if @user != current_user
+      flash[:notice] = "You can only see your own page"
+      redirect_to jobs_path
+    end 
   end
 
-  def edit         
+  def edit             
   end
 
   def update 
     @user.update(user_params)
+    flash[:notice] = "User has been successfully updated"
     redirect_to user_path(@user)
   end 
 
 
   private
+
+  def find_user 
+    @user = User.find_by(id: params[:id])
+  end
   
 
   def user_params 
