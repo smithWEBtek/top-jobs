@@ -40,27 +40,15 @@ class JobsController < ApplicationController
     redirect_to root_path, alert: "Job successfully deleted"
   end
 
-  private
-
-  def set_user 
-    @user = current_user 
-  end
+  private  
 
   def set_job 
     @job = Job.find_by(id: params[:id])
-  end
-
-  def require_login
-    unless logged_in?
-      flash[:notice] = "Please log in to view this page"
-      redirect_to root_path
-    end
-  end
+  end  
 
   def job_params 
     params.require(:job).permit(:title, :location, :category, :company_name, :description, :salary, :company_id)
   end
-
 
 
 end
