@@ -6,7 +6,7 @@ Posted: <%= @job.created_at.strftime("%m/%d/%y") %><br>
 <%= @job.salary %>K<br>
 <%= @job.description %><br>
 <br>
-<% if @job.company_id != nil && @user.id == @job.company_id%>
+<% if @job.company_id != nil &&  @user.id == @job.company_id %>
 
 <%= link_to 'See Applicants', job_job_applications_path(@job) %><br>
 <br>

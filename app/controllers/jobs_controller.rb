@@ -1,54 +1,61 @@
 class JobsController < ApplicationController
+  before_action :set_user, :except => [:index]
+  before_action :require_login, :except => [:index]
+  before_action :set_job, :except => [:index, :new, :create]
 
   def new 
-    @user = current_user    
     @job = Job.new 
-    
   end
 
   def index 
     @jobs = Job.all 
-    @user = current_user 
   end 
 
   def create        
-    @user = current_user
-    @job = Job.new(job_params)
-    authorize @job
-    if @job.valid?
-      @job.save      
+    @job = Job.create(job_params)       
+    if @job.save      
       redirect_to job_path(@job), alert: "Job successfully created!"
-    else 
-      render :new, alert: "Please try entry again."
+    else        
+      render :new     #needs a double click on create job to make this work
     end
   end
 
-  def show     
-    @job = Job.find_by(id: params[:id])
-    @user = current_user 
+  def show 
+    
   end
 
-  def edit 
-    @job = Job.find_by(id: params[:id])
-    @user = current_user
-    authorize @job  
+  def edit     
+    authorize @job    
   end
 
-  def update 
-    @job = Job.find_by(id: params[:id])
+  def update     
     authorize @job
     @job.update(job_params)
     redirect_to job_path(@job), alert: "Job successfully updated!"
   end 
 
   def destroy 
-    @job = Job.find_by(id: params[:id])
     authorize @job
     @job.destroy
     redirect_to root_path, alert: "Job successfully deleted"
   end
 
   private
+
+  def set_user 
+    @user = current_user 
+  end
+
+  def set_job 
+    @job = Job.find_by(id: params[:id])
+  end
+
+  def require_login
+    unless logged_in?
+      flash[:notice] = "Please log in to view this page"
+      redirect_to root_path
+    end
+  end
 
   def job_params 
     params.require(:job).permit(:title, :location, :category, :company_name, :description, :salary, :company_id)

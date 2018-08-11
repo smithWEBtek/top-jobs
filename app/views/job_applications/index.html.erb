@@ -1,6 +1,8 @@
 <h3>Job Application Index</h3>
 
-
+<% if @job_applications.size == 0 %>
+<h5>There are no applicants yet</h5>
+<% end %>
 
 <% @job_applications.each do |application| %>
     <%= application.job.title %>
