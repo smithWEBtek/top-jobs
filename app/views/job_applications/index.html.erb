@@ -8,5 +8,5 @@
 
 <% @job_applications.each do |application| %>
     <%= link_to application.name, job_application_path(application) %> |
-    <%= application.created_at.strftime("%m/%d/%y") %><br>
+    Date Applied: <%= application.created_at.strftime("%m/%d/%y") %><br>
     <% end %>

@@ -4,4 +4,10 @@
     <%= link_to "#{job.title}", job_path(job) %> | 
     <%= job.company_name %> | <%= job.location %> |
     Date Posted: <%= job.created_at.strftime("%m/%d/%y") %> <br>
-    <% end %>
+    <% end %><br>
+    <br>
+    <br>
+
+<%= link_to "Sign In", signin_path %> |
+<%= link_to "Sign Up", new_user_path %> |
+<%= link_to "Log Out", signout_path %>
