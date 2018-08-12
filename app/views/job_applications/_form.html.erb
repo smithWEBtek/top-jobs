@@ -4,7 +4,8 @@ Applying for <%= @job.title %> at <%= @job.company_name %><br>
 <%= @job.description %>
 
 
-<%= form_for @job_application, url: {action: "create"} do |f| %>
+
+<%= form_for @job_application do |f| %>
 
     <% if @job_application.errors.any? %>
     <div id="error_explanation">

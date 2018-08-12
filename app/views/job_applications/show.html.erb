@@ -9,7 +9,18 @@ Application Date:<%= @job_application.created_at.strftime("%m/%d/%y") %><br>
 <p>Email:  <%= @job_application.email %><br>
 Qualifications: <%= @job_application.qualifications %></p><br>
 
+<% if @user.role == "applicant" %>
+
+<%= link_to "Edit Application", edit_job_application_path(@job_application) %> |
+
 <%= link_to 'Delete', job_application_path(@job_application),
 data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
 
 <%= link_to 'My Jobs', user_path(@user) %> 
+
+<% elsif @user.role == "company" %>
+
+<%= link_to "Go Back to All Applicants" %>
+
+
+<% end %>

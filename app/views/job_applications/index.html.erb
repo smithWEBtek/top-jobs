@@ -5,6 +5,6 @@
 <% end %>
 
 <% @job_applications.each do |application| %>
-    <%= application.job.title %>
+    <%= link_to application.job.title, job_application_path(application) %>
     <%= application.email %><br>
     <% end %>

@@ -23,7 +23,7 @@ rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def require_login
     unless logged_in?
-      flash[:notice] = "Please log in to view this page"
+      flash[:notice] = "Please sign up or sign in to view this page"
       redirect_to root_path
     end
   end

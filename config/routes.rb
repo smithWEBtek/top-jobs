@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :jobs do 
-    resources :job_applications, only: [:index, :show, :new, :create, :edit]
+    resources :job_applications, only: [:index, :show, :new, :create, :edit, :update]
   end
 
   resources :job_applications
