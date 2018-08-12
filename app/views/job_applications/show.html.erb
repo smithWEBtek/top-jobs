@@ -4,9 +4,11 @@
 Application Date:<%= @job_application.created_at.strftime("%m/%d/%y") %><br>
 <%= @job_application.job.description %> <br>
 
-<h4>Job Application Information</h4>
+<h4>Job Applicant Information</h4>
 
-<p>Email:  <%= @job_application.email %><br>
+<p>Name: <%= @job_application.name %><br>
+Email:  <%= @job_application.email %><br>
+Years of Experience: <%= @job_application.years_of_experience %><br>
 Qualifications: <%= @job_application.qualifications %></p><br>
 
 <% if @user.role == "applicant" %>
@@ -20,7 +22,7 @@ data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
 
 <% elsif @user.role == "company" %>
 
-<%= link_to "Go Back to All Applicants" %>
+<%= link_to "Go Back to All Applicants" %> 
 
 
 <% end %>
