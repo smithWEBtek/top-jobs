@@ -16,7 +16,7 @@ class JobsController < ApplicationController
     @job = Job.create(job_params)       
     if @job.save      
       redirect_to job_path(@job), alert: "Job successfully created!"
-    else        
+    else         
       render :new     #needs a double click on create job to make this work
     end
   end
