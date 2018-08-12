@@ -7,6 +7,7 @@ class JobApplicationsController < ApplicationController
     if params[:job_id] 
       @job = Job.find_by_id(params[:job_id])
       @job_application = JobApplication.new(job_id: params[:job_id])
+      authorize @job_application
     end
   end
 
@@ -33,25 +34,33 @@ class JobApplicationsController < ApplicationController
   end
 
   def show 
+    #if @user.role == "company"
+    #params raise.inspect
     if params[:job_id]
       @job = Job.find_by(id: params[:job_id])
+      
       @job_application = @job.job_applications.find_by(id: params[:id])
+      
+      authorize @job_application
     else 
       @job_application = JobApplication.find(params[:id])
+      authorize @job_application
     end
   end
 
   def edit     
     @job = @job_application.job 
-    @user = current_user 
+    authorize @job_application
   end 
 
-  def update     
+  def update   
+    authorize @job_application  
     @job_application.update(job_application_params)
     redirect_to job_application_path(@job_application)
   end
 
-  def destroy     
+  def destroy 
+    authorize @job_application
     @job_application.destroy
     redirect_to '/'
   end

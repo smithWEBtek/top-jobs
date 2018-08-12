@@ -1,12 +1,15 @@
+
+<% if @user.role == "company" %>
 <h3>Applicants for <%= @job.title %> | <%= @job.company_name %></h3><br>
 
 <% if @job_applications.size == 0 %>
 <h5>There are no applicants yet</h5>
 <% end %>
+<% end %>
 
 
 
 <% @job_applications.each do |application| %>
-    <%= link_to application.name, job_application_path(application) %> |
+    <%= link_to application.name, job_job_application_path(@job,application) %> |
     Date Applied: <%= application.created_at.strftime("%m/%d/%y") %><br>
     <% end %>

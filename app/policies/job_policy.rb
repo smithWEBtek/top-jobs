@@ -4,7 +4,9 @@ class JobPolicy < ApplicationPolicy
      user.company? && record.company_id == user.id 
    end 
 
-   
+   def new?
+    user.company?
+   end
 
    def create?
     user.company?

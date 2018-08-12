@@ -22,7 +22,7 @@ data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
 
 <% elsif @user.role == "company" %>
 
-<%= link_to "Go Back to All Applicants" %> 
+<%= link_to "Go Back to All Applicants", job_job_applications_path(@job) %> 
 
 
 <% end %>

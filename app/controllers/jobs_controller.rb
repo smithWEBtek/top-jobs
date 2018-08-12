@@ -5,6 +5,7 @@ class JobsController < ApplicationController
 
   def new 
     @job = Job.new 
+    authorize @job
   end
 
   def index 
