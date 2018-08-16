@@ -13,6 +13,19 @@ class User < ApplicationRecord
     
 
     def set_default_role 
-        self.role ||= :applicant
+      self.role ||= :applicant
     end
+
+    def self.find_or_create_by_omniauth(auth_hash)
+      self.where(:email => auth_hash["info"]["email"]).first_or_create do |user|
+        user.provider = auth_hash.provider
+        user.uid = auth_hash.uid
+        user.name = auth_hash.info.name
+        user.password = auth_hash.info.name  #SecureRandom.hex
+        user.role = "applicant"
+            
+        user.save!
+      end
+    end    
+
 end

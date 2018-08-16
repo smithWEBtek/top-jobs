@@ -5,4 +5,14 @@
 <br>
 <br>
 <%= link_to "Sign In", signin_path %> |
-<%= link_to "Sign Up", new_user_path %>
+<%= link_to "Sign Up", new_user_path %><br>
+
+
+<% if session[:user_id] %>
+<h1><%= @user.name %></h1>
+<% else %>
+<%= button_to 'Sign in with Facebook', '/auth/facebook', id: "sign_in", method: :get %>
+
+<% end %>
+
+

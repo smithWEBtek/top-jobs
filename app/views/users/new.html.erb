@@ -1,5 +1,11 @@
 <h3>New User Sign Up</h3>
 
+<% User.all.each do |u| %>
+  <%= u.name %>  |
+  
+  <%= u.role %><br>
+  <% end %>
+
 
 
 <%= form_for @user do |f| %>
