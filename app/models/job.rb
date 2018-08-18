@@ -5,4 +5,6 @@ class Job < ApplicationRecord
     has_many :job_applications 
     has_many :applicants, :through => :job_applications, :class_name => 'User', :foreign_key => 'applicant_id' 
     
+    
+    scope :most_recent_first, -> { reorder(created_at: :desc)} 
 end

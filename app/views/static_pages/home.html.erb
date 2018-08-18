@@ -10,8 +10,9 @@
 
 <% if session[:user_id] %>
 <h1><%= @user.name %></h1>
-<% else %>
-<%= button_to 'Sign in with Facebook', '/auth/facebook', id: "sign_in", method: :get %>
+<% else %><br>
+
+<%= link_to 'Sign in with Facebook', '/auth/facebook', id: "sign_in", method: :get %>
 
 <% end %>
 

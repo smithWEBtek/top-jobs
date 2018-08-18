@@ -11,6 +11,12 @@
 
       <label for="user_role">Choose the type of User you are: </label>
       <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %><br>
-
+    <br>
+    
     <%= f.submit "Edit User" %>
-    <% end %> 
+    <% end %> <br>
+    <br>
+
+    <%= link_to 'My Jobs', user_path(@user) %> |
+    <%= link_to "Back to All Jobs", jobs_path %> |
+    <%= link_to "Log Out", signout_path %>

@@ -9,7 +9,10 @@ class JobsController < ApplicationController
   end
 
   def index 
-    @jobs = Job.all 
+    if logged_in?
+      set_user
+    end
+    @jobs = Job.most_recent_first     
   end 
 
   def create        

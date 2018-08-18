@@ -35,4 +35,12 @@
     <%=  f.hidden_field :company_id, :value => @user.id unless @job.company_id %>
 
     <%= f.submit %>
-    <% end %>
+    <% end %><br>
+    <br>
+
+
+    <%= link_to 'My Jobs', user_path(@user.id) %> |
+
+    <%= link_to "All Jobs", jobs_path %> |
+
+    <%= link_to "Log Out", signout_path %>

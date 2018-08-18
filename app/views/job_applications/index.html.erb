@@ -10,12 +10,14 @@
 
 
 <% @job_applications.each do |application| %>
-    <%= link_to application.name, job_job_application_path(@job,application) %> |
+   <%= link_to application.name, job_job_application_path(@job,application) %> |
     Date Applied: <%= application.created_at.strftime("%m/%d/%y") %><br>
     <% end %><br>
     <br>
 
 <% if @user.role == "company" %>
-<%= link_to "Company Job List", user_path(@user.id) %> |
-<%= link_to "Back to Job Listing", job_path(@job) %>
+<%= link_to "My Jobs", user_path(@user.id) %> |
+<%= link_to "All Jobs", job_path(@job) %> |
+<%= link_to "Log Out", signout_path %>
+
 <% end %>

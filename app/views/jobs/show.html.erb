@@ -1,4 +1,4 @@
-<h1>Jobs Show</h1>
+<h1>Job Details</h1>
 <%= @job.title %><br>
 Posted: <%= @job.created_at.strftime("%m/%d/%y") %><br>
 <%= @job.company_name %><br>
@@ -10,17 +10,29 @@ Posted: <%= @job.created_at.strftime("%m/%d/%y") %><br>
 
 <%= link_to 'See Applicants', job_job_applications_path(@job) %><br>
 <br>
-<%= link_to 'Company Job List', user_path(@user.id) %><br>
-
-
-<%= link_to 'Delete Job', job_path(@job),
-data: {:confirm => 'Are you sure?'}, :method => :delete %> |
+<br>
 
 <%= link_to "Edit Job", edit_job_path %> |
 
+<%= link_to 'Delete Job', job_path(@job),
+data: {:confirm => 'Are you sure?'}, :method => :delete %><br>
+<br>
+
+
+
 <% elsif @user.role == "applicant" %>
 
-<%= link_to "Apply to Job", new_job_job_application_path(@job) %> <br>
+<%= link_to "Apply For Job", new_job_job_application_path(@job) %> <br>
+
+<% end %><br>
+
+<% if @user.role == "company" %>
+<%= link_to "Post New Job", new_job_path %> |
 <% end %>
 
-<%= link_to "Back to All Jobs", jobs_path %>
+
+<%= link_to 'My Jobs', user_path(@user.id) %> |
+
+<%= link_to "All Jobs", jobs_path %> |
+
+<%= link_to "Log Out", signout_path %>

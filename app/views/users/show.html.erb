@@ -4,7 +4,7 @@
 
 
 <% if @user.role == "applicant" %>
-  <h4>Jobs Applied To</h4>
+  <h4>Jobs Applied For</h4>
 <% @user.job_applications.each do |application| %>
     <%= link_to "#{application.job.title}", job_application_path(application) %> |
     <%= application.job.company_name %> |
@@ -19,8 +19,17 @@
       <%= link_to "#{job.title}", job_path(job) %>|  <%= job.location %> | 
       Date Posted: <%= job.created_at.strftime("%m/%d/%y") %><br>
       <% end %>
+
+      
+
+     
       <% end %>
       <br>
+      <br>
+
+      
+
+
 
       
     
@@ -29,8 +38,10 @@
 <%= link_to "Post New Job", new_job_path %> |
 <% end %>
 
-<%= link_to "Edit User", edit_user_path %>  |
 
-<%= link_to "See all jobs", jobs_path %>  |
+
+<%= link_to "All jobs", jobs_path %>  |
+
+<%= link_to "Edit User", edit_user_path %>  |
 
 <%= link_to "Log Out", signout_path %>

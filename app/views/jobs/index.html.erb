@@ -1,4 +1,4 @@
-<h1>Jobs Index</h1>
+<h1> Jobs </h1>
 
 <% @jobs.each do |job| %> 
     <%= link_to "#{job.title}", job_path(job) %> | 
@@ -8,6 +8,12 @@
     <br>
     <br>
 
-<%= link_to "Sign In", signin_path %> |
-<%= link_to "Sign Up", new_user_path %> |
-<%= link_to "Log Out", signout_path %>
+    <% if session[:user_id] %>
+
+    <%= link_to 'My Jobs', user_path(@user) %> |
+    <%= link_to "Log Out", signout_path %>
+    
+    <% else %> 
+    <%= link_to "Sign In", signin_path %> |
+    <%= link_to "Sign Up", new_user_path %> 
+    <% end %>

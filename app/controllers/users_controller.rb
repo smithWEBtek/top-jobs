@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
   end 
 
-  def show  
+  def show     
     if @user != current_user
       flash[:notice] = "You can only see your own page"
       redirect_to jobs_path

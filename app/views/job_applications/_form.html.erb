@@ -39,6 +39,11 @@ Applying for <%= @job.title %> at <%= @job.company_name %><br>
     <%=  f.hidden_field :applicant_id, :value => @user.id unless @job_application.applicant_id %>
 
     <%= f.submit %>
-    <% end %>
+    <% end %><br>
 
-    <%= link_to "Back to All Jobs", jobs_path %> 
+    
+    <%= link_to 'My Jobs', user_path(@user.id) %> |
+
+    <%= link_to "All Jobs", jobs_path %> |
+
+    <%= link_to "Log Out", signout_path %>

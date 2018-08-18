@@ -16,6 +16,11 @@ class JobApplicationPolicy < ApplicationPolicy
     user.applicant?
   end 
 
+  def index?
+    user.company?
+  end
+
+
   def show?
     created_by_applicant? || company_owns_job?
   end

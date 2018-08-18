@@ -11,14 +11,18 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  def index 
-    if params[:job_id] 
-      @job = Job.find_by(id: params[:job_id])      
-      @job_applications = @job.job_applications 
-      #binding.pry
-    else 
-      @job_applications = JobApplication.all  #may get rid of this, s/only be for admin
-    end 
+  def index     
+    if @user.role != 'company'
+      redirect_to user_path(@user), alert: "You can only see your own applications"
+    else
+      if params[:job_id] 
+       @job = Job.find_by(id: params[:job_id])      
+       @job_applications = @job.job_applications 
+      end  
+      #else  
+        #@job_applications = JobApplication.all   #s/only be for admin. Will add admin later
+      #end 
+    end
   end
 
   def create 
