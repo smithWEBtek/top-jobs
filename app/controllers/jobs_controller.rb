@@ -12,7 +12,7 @@ class JobsController < ApplicationController
     if logged_in?
       set_user
     end
-    @jobs = Job.most_recent_first     
+    @jobs = Job.most_recent_first  
   end 
 
   def create        

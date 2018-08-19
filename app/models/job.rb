@@ -4,7 +4,8 @@ class Job < ApplicationRecord
     belongs_to :company, :class_name => 'User', :foreign_key => 'company_id'
     has_many :job_applications 
     has_many :applicants, :through => :job_applications, :class_name => 'User', :foreign_key => 'applicant_id' 
-    
+    accepts_nested_attributes_for :job_applications
     
     scope :most_recent_first, -> { reorder(created_at: :desc)} 
+    
 end

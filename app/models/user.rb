@@ -21,7 +21,7 @@ class User < ApplicationRecord
         user.provider = auth_hash.provider
         user.uid = auth_hash.uid
         user.name = auth_hash.info.name
-        user.password = auth_hash.info.name  #SecureRandom.hex
+        user.password = SecureRandom.hex
         user.role = "applicant"
             
         user.save!

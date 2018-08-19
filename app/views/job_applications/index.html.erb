@@ -16,8 +16,9 @@
     <br>
 
 <% if @user.role == "company" %>
+<%= link_to "Job Details", job_path(@job) %> |
 <%= link_to "My Jobs", user_path(@user.id) %> |
-<%= link_to "All Jobs", job_path(@job) %> |
+<%= link_to "All Jobs", jobs_path %> |
 <%= link_to "Log Out", signout_path %>
 
 <% end %>
