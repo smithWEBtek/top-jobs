@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    redirect_to user_path(current_user) if logged_in?
   end
 
   def create 
@@ -22,8 +23,7 @@ class SessionsController < ApplicationController
 
   def destroy 
     session.delete :user_id 
-    redirect_to '/'
+    redirect_to root_path, alert: "Successfully logged out"
   end
-
   
 end

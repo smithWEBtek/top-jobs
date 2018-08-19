@@ -41,7 +41,7 @@ class JobsController < ApplicationController
   def destroy 
     authorize @job
     @job.destroy
-    redirect_to root_path, alert: "Job successfully deleted"
+    redirect_to user_path(@user), alert: "Job successfully deleted"
   end
 
   private  

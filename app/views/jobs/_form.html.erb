@@ -1,4 +1,4 @@
-<h3>Jobs Form</h3>
+
 
 <%= form_for @job do |f| %>
 
@@ -12,7 +12,7 @@
     <% end %>
     </ul>
     </div>
-    <% end %>
+    <% end %><br>
 
     <%= f.label :Title %><br>
     <%= f.text_field :title %><br>
@@ -33,7 +33,7 @@
     <%= f.text_area :description %><br>
 
     <%=  f.hidden_field :company_id, :value => @user.id unless @job.company_id %>
-
+    <br>
     <%= f.submit %>
     <% end %><br>
     <br>

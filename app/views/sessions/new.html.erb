@@ -1,4 +1,4 @@
-<h1>Sign In</h1>
+<h2>Sign In</h2>
 
 
 
@@ -11,8 +11,11 @@
 
     <%= f.label :password, "Password:" %><br>
     <%= f.password_field :password %><br>
-
+    <br>
     <%= f.submit "Sign In" %>
     <% end %>
+    <br>
+    <%= link_to "Home", root_path %> |
+    <%= link_to "All Jobs", jobs_path %>
 
 

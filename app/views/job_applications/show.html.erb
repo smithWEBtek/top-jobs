@@ -1,11 +1,12 @@
-<h4>Job Applied For</h4>
+<h3>Job Applied For</h3>
 
 <%= @job_application.job.title %> | <%= @job_application.job.company_name %> | <%= @job_application.job.location %> <br>
 Application Date:<%= @job_application.created_at.strftime("%m/%d/%y") %><br>
 <%= @job_application.job.description %> <br>
 <br>
+<br>
 
-<h4>Job Application</h4>
+<h3>Job Application</h3>
 
 <p>Name: <%= @job_application.name %><br>
 Email:  <%= @job_application.email %><br>

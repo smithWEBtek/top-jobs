@@ -3,8 +3,11 @@
 
 
 
-<% if @user.role == "applicant" %>
-  <h4>Jobs Applied For</h4>
+<% if @user.role == "applicant" %><br>
+<br>
+
+  <h4>Jobs Applied For</h4><br>
+  
 <% @user.job_applications.each do |application| %>
     <%= link_to "#{application.job.title}", job_application_path(application) %> |
     <%= application.job.company_name %> |
@@ -13,12 +16,13 @@
     <br>
     <% end %>
 
-    <% if @user.role == "company" %>
-    <h4>Jobs Posted</h4>
+    <% if @user.role == "company" %><br>
+    <br>
+    <h4>Jobs Posted</h4><br>
     <% @user.jobs.each do |job| %>
       <%= link_to "#{job.title}", job_path(job) %>|  <%= job.location %> | 
       Date Posted: <%= job.created_at.strftime("%m/%d/%y") %><br>
-      <% end %>
+      <% end %><br>
 
       
 
