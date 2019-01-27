@@ -69,6 +69,10 @@ class JobApplicationsController < ApplicationController
     redirect_to user_path(@user), alert: "Job Application successfully deleted"
   end
 
+  def most_recent_applications 
+    @job_applications = JobApplication.most_recent_applications
+  end
+
   private 
 
   def find_job_application

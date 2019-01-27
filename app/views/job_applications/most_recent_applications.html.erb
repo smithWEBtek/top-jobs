@@ -1,0 +1,8 @@
+<h2>Most Recent Applications First</h2>
+
+
+<% @job_applications.each do |appl| %>
+    <%= appl.name %> |
+    <%= appl.email %>  |
+    <%= appl.qualifications %><br>
+    <% end %>

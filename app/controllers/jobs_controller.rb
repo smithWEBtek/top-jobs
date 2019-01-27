@@ -13,6 +13,10 @@ class JobsController < ApplicationController
       set_user
     end
     @jobs = Job.most_recent_first  
+    respond_to do |f|
+      f.html
+      f.json {render json: @jobs}
+    end
   end 
 
   def create        

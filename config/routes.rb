@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :job_applications
 
+  get '/most_recent_applications' => 'job_applications#most_recent_applications'
+
   get '/signin' => 'sessions#new'
   post '/signin' => 'sessions#create'
   
