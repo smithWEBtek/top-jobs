@@ -7,8 +7,10 @@ const bindClickHandlers = () => {
      e.preventDefault()
      //alert('i was clicked')
      fetch(`/jobs.json`)
-     .then((res) => res.json())
-     .then(data => console.log(data))
+     .then((response) => response.json())
+     .then(data => {
+        $('#app-container').html('')
+     })
         
     })
 }
