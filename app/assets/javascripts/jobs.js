@@ -11,16 +11,29 @@ const bindClickHandlers = () => {
      .then((response) => response.json())
      .then(jobs => {
         $('#app-container').html('')
+        $(`#app-container`).html('Jobs')
         jobs.forEach(job => {    //or jobs.forEach(function(job) {
             let newJob = new Job(job)
             let jobHtml = newJob.formatIndex()
             $(`#app-container`).append(jobHtml)
             console.log(newJob)
         })
-     })
-        
+     })        
+    })
+
+    $(document).on('click', ".show_link", function(e) {
+        e.preventDefault()
+        alert('i was clicked')
+        let id = $(this).attr('data-id')
+        //console.log("this")
+        fetch(`/jobs/${id}.json`)
+        .then(response => response.json())
+        .then(job => {
+        console.log(job)
+        })
     })
 }
+
 
 function Job(job) {
     this.id = job.id
@@ -35,9 +48,9 @@ function Job(job) {
 
 Job.prototype.formatIndex = function() {
     let jobHtml = `
-    <a href="/jobs/${this.id}"><h3>${this.title}</h3></a> |
+    <a href="/jobs/${this.id}" data-id="${this.id}" class="show_link"><h3>${this.title}</h3></a> |
     ${this.company_name} |
     ${this.location} |
-    "Date Posted:"${this.created_at}`
+    Date Posted:${this.created_at}`
     return jobHtml
 }

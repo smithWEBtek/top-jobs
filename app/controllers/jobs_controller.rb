@@ -29,7 +29,10 @@ class JobsController < ApplicationController
   end
 
   def show 
-    
+    respond_to do |f|
+      f.html
+      f.json {render json: @job}
+    end
   end
 
   def edit     
