@@ -23,16 +23,20 @@ const bindClickHandlers = () => {
 
     $(document).on('click', ".show_link", function(e) {
         e.preventDefault()
-        alert('i was clicked')
+        //alert('i was clicked')
         let id = $(this).attr('data-id')
-        //console.log("this")
-        fetch(`/jobs/${id}.json`)
+        //console.log(id)
+        let jobDetail = fetch(`/jobs/${id}.json`)
+        
         .then(response => response.json())
         .then(job => {
-        console.log(job)
+            
+        $(`#app-container`).html('')
+        $(`#app-container`).append("this is cool!")
         })
     })
 }
+
 
 
 function Job(job) {
@@ -53,4 +57,14 @@ Job.prototype.formatIndex = function() {
     ${this.location} |
     Date Posted:${this.created_at}`
     return jobHtml
+}
+
+Job.prototype.formatShow = function() {
+    let detailHtml = `
+    ${this.title} | 
+    ${this.company_name} |
+    ${this.location} |
+    ${this.description} |
+    ${this.salary}`
+    return detailHtml
 }
