@@ -8,7 +8,7 @@ const bindClickHandlers = () => {
      history.pushState(null, null, "jobs")
      //alert('i was clicked')
      fetch(`/jobs.json`)
-     .then((response) => response.json())
+     .then((res) => res.json())
      .then(jobs => {
         $('#app-container').html('')
         $(`#app-container`).html('Jobs')
@@ -26,13 +26,14 @@ const bindClickHandlers = () => {
         //alert('i was clicked')
         let id = $(this).attr('data-id')
         //console.log(id)
-        let jobDetail = fetch(`/jobs/${id}.json`)
-        
-        .then(response => response.json())
+        fetch(`/jobs/${id}.json`)
+        .then(res => res.json())
         .then(job => {
-            
+            let newJob = new Job(job)
+            let jobHtml = newJob.formatShow()    
+                
         $(`#app-container`).html('')
-        $(`#app-container`).append("this is cool!")
+        $(`#app-container`).append(jobHtml)
         })
     })
 }
@@ -43,6 +44,7 @@ function Job(job) {
     this.id = job.id
     this.title = job.title
     this.salary = job.salary
+    this.description = job.description
     this.category = job.category
     this.company_name = job.company_name
     this.company_id = job.company_id 
@@ -60,11 +62,11 @@ Job.prototype.formatIndex = function() {
 }
 
 Job.prototype.formatShow = function() {
-    let detailHtml = `
-    ${this.title} | 
+    let jobHtml = `
+    <h3>${this.title}</h3>     
     ${this.company_name} |
     ${this.location} |
     ${this.description} |
     ${this.salary}`
-    return detailHtml
+    return jobHtml
 }
