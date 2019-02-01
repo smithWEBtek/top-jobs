@@ -13,9 +13,16 @@
 
   <body>
   <div id="app-container">
-	<%= link_to 'All Jobs', jobs_path %> |
+	<%= link_to 'All Jobs', jobs_path, id: 'all-jobs-link' %> |
 	<%= link_to 'New Job', new_job_path %> |
-	<%= link_to 'All Users', users_path %>
+	<%= link_to 'All Users', users_path, id: 'all-users-link' %>
+	<hr>
+	<div id="all-jobs-div">*************  ALL JOBS LIST HERE *************</div>
+
+  <br>
+  <br>
+  <br>
+	<hr>
 	<hr>
 	    <% if !flash.empty? %>
     <div id="flash" class="flash-message"> 

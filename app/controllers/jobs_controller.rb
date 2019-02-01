@@ -19,7 +19,10 @@ class JobsController < ApplicationController
     end
   end 
 
-  def create        
+	def create   
+		
+			# binding.pry
+
     @job = Job.create(job_params)       
     if @job.save      
       redirect_to job_path(@job), alert: "Job successfully created!"
