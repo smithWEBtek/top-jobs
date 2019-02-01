@@ -5,26 +5,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <% if !flash.empty? %>
-    <div id="flash"> 
-        <% flash.keys.each do |k| %> 
-            <div class="<%= k %>">
-                <%= flash[k] %>
-            </div>  
-        <% end %>   
-    </div>
-<% end %>
-
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
 
 
   </head>
 
   <body>
   <div id="app-container">
+	<%= link_to 'All Jobs', jobs_path %> |
+	<%= link_to 'New Job', new_job_path %> |
+	<%= link_to 'All Users', users_path %>
+	<hr>
+	    <% if !flash.empty? %>
+    <div id="flash" class="flash-message"> 
+        <% flash.keys.each do |k| %> 
+            <div class="<%= k %>">
+                <%= flash[k] %>
+            </div>  
+        <% end %>   
+    </div>
+		<% end %>
+
     <%= yield %>
+
     </div>
   </body>
 </html>

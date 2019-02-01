@@ -14,7 +14,11 @@
  *= require_self
  */
  @media screen {
-    /* --- Reset Styles --- */
+		/* --- Reset Styles --- */
+		
+		.flash-message{
+			background-color: red;
+		}
     * {
       list-style: none;
       margin: 0;

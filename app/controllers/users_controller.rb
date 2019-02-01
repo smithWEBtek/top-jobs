@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   before_action :require_login, :except => [:new, :create]
   before_action :find_user, :except => [:new, :create]
-  
+	
+	def index 
+		@users = User.all
+		render json: @users			
+	end
 
   def new 
     redirect_to user_path(current_user) if logged_in?
